@@ -1,9 +1,12 @@
 import "./App.css";
 import Container from "./Components/Container/Container";
+import { ApplicationContextProvider } from "./store";
 function App() {
   return (
     <>
-      <Container />
+      <ApplicationContextProvider>
+        <Container />
+      </ApplicationContextProvider>
     </>
   );
 }
