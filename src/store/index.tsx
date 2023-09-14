@@ -2,6 +2,9 @@ import { ApplicationContext } from "./applicationContext";
 import { Advice, Data, WorldTime, Location } from "../models/domain";
 import { fetcher } from "../Helpers/fetcher";
 import { useState, useEffect } from "react";
+import Ipbase from "@everapi/ipbase-js";
+
+const ipBase = new Ipbase("ipb_live_arAL4ajpJjPnV35Ew9BnsI5VLFABkskQ0WzHjAAV");
 
 type ApplicationContextProviderProps = {
   children: React.ReactNode;
@@ -11,25 +14,31 @@ export function ApplicationContextProvider({
   children,
 }: ApplicationContextProviderProps) {
   const [advice, setAdvice] = useState<Advice | null>(null);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [adviceError, setAdviceError] = useState("");
+  const [adviceIsLoading, setAdviceIsLoading] = useState(true);
 
-  const [worldTime, setWorldTime] = useState(null);
-  const [location, setLocation] = useState(null);
+  const [worldTime, setWorldTime] = useState<WorldTime | null>(null);
+  const [worldTimeError, setWorldTimeError] = useState("");
+  const [worldTimeIsLoading, setWorldTimeIsLoading] = useState(true);
+
+  // const [location, setLocation] = useState<Location | null>(null);
+  //const [locationError, setLocationError] = useState("");
+  //const [locationIsLoading, setLocationIsLoading] = useState(true);
 
   useEffect(() => {
+    //getLocation();
     getAdviceData();
     getWorldtime();
   }, []);
 
   const getAdviceData = async () => {
-    if (!isLoading) setIsLoading(true);
+    if (!adviceIsLoading) setAdviceIsLoading(true);
     try {
       const data: Data = await fetcher("https://api.adviceslip.com/advice");
       setAdvice(data.slip);
-      setIsLoading(false);
+      setAdviceIsLoading(false);
     } catch (error) {
-      setError("Something goes wrong!");
+      setAdviceError("Something goes wrong!");
       setAdvice(null);
     }
   };
@@ -39,30 +48,44 @@ export function ApplicationContextProvider({
   };
 
   const getWorldtime = async () => {
-    if (!isLoading) setIsLoading(true);
+    if (!worldTimeIsLoading) setWorldTimeIsLoading(true);
     try {
-      const data: WorldTime = await fetcher("http://worldtimeapi.org/api");
+      // Функция getLocation нужна нам только для того, чтобы через нее вызвать метод ipBase.info() и узнать
+      //адрес человека, зашедшего на сайт. После этого, мы берем этот метод и вставляем в функцию   getWorldtime.
+      // Это нам нужно для того, чтобы определить порядок срабатывания функций. То есть вначале приложение будет узнавать
+      //локацию, а потом исходя из этой локации присылать нам объект, где будут находиться свойства этого конкретного пользователя.
+      // Теперь мы можем удалить функцию getLocation(), потому что мы импортировали import Ipbase from "@everapi/ipbase-js" и воспользовались/
+      //методом   ipBase.info(), с помощью которого мы можем узнавать локацию.
+      const locdata: Location = await ipBase.info();
+      console.log(locdata);
+
+      const data: WorldTime = await fetcher(
+        `http://worldtimeapi.org/api/timezone/${locdata.data.timezone.id}`
+      );
+      console.log(data);
+
       setWorldTime(data);
-      setIsLoading(false);
+      setWorldTimeIsLoading(false);
     } catch (error) {
-      setError("Something goes wrong!");
+      setWorldTimeError("Something goes wrong!");
       setWorldTime(null);
     }
   };
-  const getLocation = async () => {
-    if (!isLoading) setIsLoading(true);
-    try {
-      const data: Location = await fetcher("http://worldtimeapi.org/api");
-      setLocation(data);
-      setIsLoading(false);
+  //const getLocation = async () => {
+  // if (!locationIsLoading) setLocationIsLoading(true);
+
+  // try {
+  // const data: Location = await ipBase.info();
+  /* setLocation(data);
+      setLocationIsLoading(false);
     } catch (error) {
-      setError("Something goes wrong!");
+      setLocationError("Something goes wrong!");
       setLocation(null);
     }
-  };
+  };*/
 
   const ctxValue = {
-    getLocation,
+    // getLocation,
     getWorldtime,
     getAdviceData,
     upDateAdvice,
