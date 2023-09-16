@@ -25,7 +25,7 @@ export type WorldTime = {
   week_number: number;
 };
 
-export type Location = {
+/*export type Location = {
   data: {
     ip: string;
     hostname: string;
@@ -112,4 +112,13 @@ export type Location = {
       gmt_offset: number;
     };
   };
-};
+}; */
+
+export interface Location {
+  data: {
+    timezone: {
+      id: string;
+      name: string;
+    };
+  };
+}
