@@ -21,12 +21,7 @@ export function ApplicationContextProvider({
   const [worldTimeError, setWorldTimeError] = useState("");
   const [worldTimeIsLoading, setWorldTimeIsLoading] = useState(true);
 
-  // const [location, setLocation] = useState<Location | null>(null);
-  //const [locationError, setLocationError] = useState("");
-  //const [locationIsLoading, setLocationIsLoading] = useState(true);
-
   useEffect(() => {
-    //getLocation();
     getAdviceData();
     getWorldtime();
   }, []);
@@ -71,21 +66,10 @@ export function ApplicationContextProvider({
       setWorldTime(null);
     }
   };
-  //const getLocation = async () => {
-  // if (!locationIsLoading) setLocationIsLoading(true);
-
-  // try {
-  // const data: Location = await ipBase.info();
-  /* setLocation(data);
-      setLocationIsLoading(false);
-    } catch (error) {
-      setLocationError("Something goes wrong!");
-      setLocation(null);
-    }
-  };*/
 
   const ctxValue = {
-    // getLocation,
+    advice,
+    worldTime,
     getWorldtime,
     getAdviceData,
     upDateAdvice,

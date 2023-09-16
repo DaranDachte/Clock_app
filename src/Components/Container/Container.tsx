@@ -2,15 +2,9 @@ import Top from "./Top/Top";
 import Bottom from "./Bottom/Bottom";
 import AddedInformation from "./AddedInformation/AddedInformation";
 
-import { ApplicationContext } from "../../store/applicationContext";
-
-import { useContext } from "react";
-
 const Container = () => {
-  const appCtx = useContext(ApplicationContext);
-
   return (
-    <div>
+    <div className="w-screen h-screen  bg-gradient-to-r from-cyan-500 to-blue-500 ">
       <Top />
       <Bottom />
       <AddedInformation />

@@ -1,15 +1,25 @@
 import Greeting from "./Greeting/Greeting";
 import Time from "./Time/Time";
-import TimeZone from "./TimeZone/TimeZone";
+import Dst from "./Dst/Dst";
 import Location from "./Location/Location";
-const TimeSet = () => {
+import { WorldTime } from "../../../../models/domain";
+
+interface TimeSetProps {
+  worldTime: WorldTime | null;
+}
+
+const TimeSet: React.FC<TimeSetProps> = ({ worldTime }) => {
   return (
     <>
-      <Greeting />
-      <Time />
-      <TimeZone />
-      <Location />
-      <div>TimeSet</div>
+      <div className="flex flex-col">
+        <Greeting dateTime={(worldTime && worldTime.datetime) || null} />
+        <Time />
+        <Location />
+      </div>
+
+      <div className="flex flex-row">
+        <Dst />
+      </div>
     </>
   );
 };

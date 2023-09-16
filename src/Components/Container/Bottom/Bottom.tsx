@@ -1,13 +1,20 @@
 import TimeSet from "./TimeSet/TimeSet";
 import Toggle from "./Toggle/Toggle";
+import { useContext } from "react";
+import { ApplicationContext } from "../../../store/applicationContext";
 
 const Bottom = () => {
+  const appctx = useContext(ApplicationContext);
   return (
     <>
-      <div>Bottom</div>
-      <div>
-        <TimeSet />
-        <Toggle />
+      <div className="flex ">
+        <div className="w-1/2">
+          <TimeSet worldTime={appctx.worldTime} />
+        </div>
+
+        <div className="w-1/2">
+          <Toggle />
+        </div>
       </div>
     </>
   );
