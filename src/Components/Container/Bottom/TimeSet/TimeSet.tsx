@@ -6,13 +6,23 @@ import { WorldTime } from "../../../../models/domain";
 
 interface TimeSetProps {
   worldTime: WorldTime | null;
+  worldTimeError: string;
+  worldTimeIsLoading: boolean;
 }
 
-const TimeSet: React.FC<TimeSetProps> = ({ worldTime }) => {
+const TimeSet: React.FC<TimeSetProps> = ({
+  worldTime,
+  worldTimeError,
+  worldTimeIsLoading,
+}) => {
   return (
     <>
       <div className="flex flex-col">
-        <Greeting dateTime={(worldTime && worldTime.datetime) || null} />
+        <Greeting
+          worldTime={(worldTime && worldTime.datetime) || null}
+          worldTimeError={worldTimeError}
+          worldTimeIsLoading={worldTimeIsLoading}
+        />
         <Time />
         <Location />
       </div>
