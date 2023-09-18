@@ -7,6 +7,8 @@ type CtxValue = {
   getWorldtime: () => Promise<void>;
   advice: Advice | null;
   worldTime: WorldTime | null;
+  worldTimeError: string;
+  worldTimeIsLoading: boolean;
 };
 
 export const ApplicationContext = createContext<CtxValue>({
@@ -45,4 +47,6 @@ export const ApplicationContext = createContext<CtxValue>({
     utc_offset: "",
     week_number: 0,
   },
+  worldTimeError: "",
+  worldTimeIsLoading: false,
 });

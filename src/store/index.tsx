@@ -52,12 +52,10 @@ export function ApplicationContextProvider({
       // Теперь мы можем удалить функцию getLocation(), потому что мы импортировали import Ipbase from "@everapi/ipbase-js" и воспользовались/
       //методом   ipBase.info(), с помощью которого мы можем узнавать локацию.
       const locdata: Location = await ipBase.info();
-      console.log(locdata);
 
       const data: WorldTime = await fetcher(
         `http://worldtimeapi.org/api/timezone/${locdata.data.timezone.id}`
       );
-      console.log(data);
 
       setWorldTime(data);
       setWorldTimeIsLoading(false);
@@ -68,6 +66,8 @@ export function ApplicationContextProvider({
   };
 
   const ctxValue = {
+    worldTimeIsLoading,
+    worldTimeError,
     advice,
     worldTime,
     getWorldtime,

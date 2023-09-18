@@ -9,7 +9,11 @@ const Bottom = () => {
     <>
       <div className="flex ">
         <div className="w-1/2">
-          <TimeSet worldTime={appctx.worldTime} />
+          <TimeSet
+            worldTime={appctx.worldTime}
+            worldTimeIsLoading={appctx.worldTimeIsLoading}
+            worldTimeError={appctx.worldTimeError}
+          />
         </div>
 
         <div className="w-1/2">
