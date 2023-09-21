@@ -5,6 +5,7 @@ import { ApplicationContext } from "../../../store/applicationContext";
 
 const Bottom = () => {
   const appctx = useContext(ApplicationContext);
+
   return (
     <>
       <div className="flex ">
