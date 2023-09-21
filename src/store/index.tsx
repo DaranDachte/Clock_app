@@ -1,10 +1,14 @@
 import { ApplicationContext } from "./applicationContext";
-import { Advice, Data, WorldTime, Location } from "../models/domain";
+import {
+  Advice,
+  Data,
+  WorldTime,
+  Location,
+  WorldTimeAndLocation,
+} from "../models/domain";
 import { fetcher } from "../Helpers/fetcher";
 import { useState, useEffect } from "react";
-import Ipbase from "@everapi/ipbase-js";
-
-const ipBase = new Ipbase("ipb_live_arAL4ajpJjPnV35Ew9BnsI5VLFABkskQ0WzHjAAV");
+import { getIp } from "../services/ip.service";
 
 type ApplicationContextProviderProps = {
   children: React.ReactNode;
@@ -17,7 +21,7 @@ export function ApplicationContextProvider({
   const [adviceError, setAdviceError] = useState("");
   const [adviceIsLoading, setAdviceIsLoading] = useState(true);
 
-  const [worldTime, setWorldTime] = useState<WorldTime | null>(null);
+  const [worldTime, setWorldTime] = useState<WorldTimeAndLocation | null>(null);
   const [worldTimeError, setWorldTimeError] = useState("");
   const [worldTimeIsLoading, setWorldTimeIsLoading] = useState(true);
 
@@ -51,13 +55,16 @@ export function ApplicationContextProvider({
       //локацию, а потом исходя из этой локации присылать нам объект, где будут находиться свойства этого конкретного пользователя.
       // Теперь мы можем удалить функцию getLocation(), потому что мы импортировали import Ipbase from "@everapi/ipbase-js" и воспользовались/
       //методом   ipBase.info(), с помощью которого мы можем узнавать локацию.
-      const locdata: Location = await ipBase.info();
+      const locdata: Location = await getIp();
 
       const data: WorldTime = await fetcher(
-        `http://worldtimeapi.org/api/timezone/${locdata.data.timezone.id}`
+        `http://worldtimeapi.org/api/timezone/${locdata.timezone}`
       );
-
-      setWorldTime(data);
+      const worldTimeAndLocation: WorldTimeAndLocation = {
+        worldTime: data,
+        location: locdata,
+      };
+      setWorldTime(worldTimeAndLocation);
       setWorldTimeIsLoading(false);
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
