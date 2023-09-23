@@ -1,20 +1,19 @@
 interface TimeProps {
-  worldTime: string | null;
+  time: string | null;
   worldTimeError: string;
   worldTimeIsLoading: boolean;
 }
 
 const Time: React.FC<TimeProps> = ({
-  worldTime,
+  time,
   worldTimeError,
   worldTimeIsLoading,
 }) => {
-  const greetingDate = worldTime !== null ? new Date(worldTime) : new Date();
+  const showDate = time !== null ? new Date(time) : new Date();
 
-  const hours = greetingDate.getHours();
-
-  const minutes = greetingDate.getMinutes();
-  const seconds = greetingDate.getSeconds();
+  const hours = showDate.getHours();
+  const minutes = showDate.getMinutes();
+  const seconds = showDate.getSeconds();
 
   return (
     <div>

@@ -1,3 +1,4 @@
+import type { Location } from "../../../../../models/domain";
 interface LocationProps {
   location: Location | null;
   worldTimeError: string;
