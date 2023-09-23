@@ -1,17 +1,20 @@
 interface GreetingProps {
-  worldTime: string | null;
+  time: string | null;
   worldTimeError: string;
   worldTimeIsLoading: boolean;
 }
 
 const Greeting: React.FC<GreetingProps> = ({
-  worldTime,
+  time,
   worldTimeError,
   worldTimeIsLoading,
 }) => {
-  const greetingDate = worldTime !== null ? new Date(worldTime) : new Date();
+  const greetingDate = time !== null ? new Date(time) : new Date();
 
-  //Как  это работает? создаем константу гритинг дэйт. Проверяем, если ворлд тайм (компонент из юз стейт) не равен null, то есть время пришло через api, мы вызываем  new Date с параметром вордл тайм, то есть получаем текущее время из внешнего источника. Если ничего не приходит (null), то  мы вызываем  new Date() и через пустые скобки получаем локальное время из нашего компьютера.
+  //Как  это работает? создаем константу гритинг дэйт. Проверяем, если ворлд тайм (компонент из юз стейт)
+  // не равен null, то есть время пришло через api, мы вызываем  new Date с параметром вордл тайм, то есть
+  // получаем текущее время из внешнего источника. Если ничего не приходит (null), то  мы вызываем
+  //  new Date() и через пустые скобки получаем локальное время из нашего компьютера.
   const secInHour = 3600;
   const hours = greetingDate.getHours();
 
@@ -46,7 +49,9 @@ const Greeting: React.FC<GreetingProps> = ({
     end: 23 * secInHour + 3600 - 1,
   };
   const currentPeriodName = [nigth1, morning, day, evening, nigth2]
-    .filter(filterPeriod(totalTimeInSeconds)) //evening элемент массива, который мы отфильтровали с помощью фильтра. Теперь мы используем мап, чтобы достать имя из evening, поэтому  мы делаем мап по одному элементу и достаем первый элемент (имя), у которого индекс 0
+    .filter(filterPeriod(totalTimeInSeconds)) //evening элемент массива, который мы отфильтровали
+    // с помощью фильтра. Теперь мы используем мап, чтобы достать имя из evening, поэтому  мы делаем
+    // мап по одному элементу и достаем первый элемент (имя), у которого индекс 0
     .map((period) => period.name)[0];
 
   return (

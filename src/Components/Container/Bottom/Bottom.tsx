@@ -11,14 +11,17 @@ const Bottom = () => {
       <div className="flex ">
         <div className="w-1/2">
           <TimeSet
-            worldTime={appctx.worldTime}
+            timeAndLocationState={appctx.timeAndLocationState}
             worldTimeIsLoading={appctx.worldTimeIsLoading}
             worldTimeError={appctx.worldTimeError}
           />
         </div>
 
         <div className="w-1/2">
-          <Toggle />
+          <Toggle
+            showAdditionalInfo={appctx.showAddedInformation}
+            changeBottomAndAddInfo={appctx.setShowAddedInformation}
+          />
         </div>
       </div>
     </>

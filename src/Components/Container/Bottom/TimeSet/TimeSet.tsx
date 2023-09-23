@@ -2,16 +2,16 @@ import Greeting from "./Greeting/Greeting";
 import Time from "./Time/Time";
 import Dst from "./Dst/Dst";
 import Location from "./Location/Location";
-import { WorldTime, WorldTimeAndLocation } from "../../../../models/domain";
+import { WorldTimeAndLocation } from "../../../../models/domain";
 
 interface TimeSetProps {
-  worldTime: WorldTimeAndLocation;
+  timeAndLocationState: WorldTimeAndLocation | null;
   worldTimeError: string;
   worldTimeIsLoading: boolean;
 }
 
 const TimeSet: React.FC<TimeSetProps> = ({
-  worldTime,
+  timeAndLocationState,
   worldTimeError,
   worldTimeIsLoading,
 }) => {
@@ -19,34 +19,36 @@ const TimeSet: React.FC<TimeSetProps> = ({
     <>
       <div className="flex flex-col">
         <Greeting
-          worldTime={
-            (worldTime &&
-              worldTime.worldTime &&
-              worldTime.worldTime.datetime) ||
+          time={
+            (timeAndLocationState &&
+              timeAndLocationState.worldTime &&
+              timeAndLocationState.worldTime.datetime) ||
             null
           }
           worldTimeError={worldTimeError}
           worldTimeIsLoading={worldTimeIsLoading}
         />
         <Time
-          worldTime={
-            (worldTime &&
-              worldTime.worldTime &&
-              worldTime.worldTime.datetime) ||
+          time={
+            (timeAndLocationState &&
+              timeAndLocationState.worldTime &&
+              timeAndLocationState.worldTime.datetime) ||
             null
           }
           worldTimeError={worldTimeError}
           worldTimeIsLoading={worldTimeIsLoading}
         />
         <Location
-          location={(worldTime && worldTime.location) || null}
+          location={
+            (timeAndLocationState && timeAndLocationState.location) || null
+          }
           worldTimeError={worldTimeError}
           worldTimeIsLoading={worldTimeIsLoading}
         />
       </div>
 
       <div className="flex flex-row">
-        <Dst />
+        <Dst timeAndLocationState={timeAndLocationState} />
       </div>
     </>
   );

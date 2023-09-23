@@ -21,9 +21,12 @@ export function ApplicationContextProvider({
   const [adviceError, setAdviceError] = useState("");
   const [adviceIsLoading, setAdviceIsLoading] = useState(true);
 
-  const [worldTime, setWorldTime] = useState<WorldTimeAndLocation | null>(null);
+  const [timeAndLocationState, setTimeAndLocationState] =
+    useState<WorldTimeAndLocation | null>(null);
   const [worldTimeError, setWorldTimeError] = useState("");
   const [worldTimeIsLoading, setWorldTimeIsLoading] = useState(true);
+
+  const [showAddedInformation, setShowAddedInformation] = useState(false);
 
   useEffect(() => {
     getAdviceData();
@@ -55,20 +58,20 @@ export function ApplicationContextProvider({
       //локацию, а потом исходя из этой локации присылать нам объект, где будут находиться свойства этого конкретного пользователя.
       // Теперь мы можем удалить функцию getLocation(), потому что мы импортировали import Ipbase from "@everapi/ipbase-js" и воспользовались/
       //методом   ipBase.info(), с помощью которого мы можем узнавать локацию.
-      const locdata: Location = await getIp();
+      const locdata: Location = await getIp(); // запрос данных геолокации, из отдельного сервиса.
 
       const data: WorldTime = await fetcher(
         `http://worldtimeapi.org/api/timezone/${locdata.timezone}`
       );
       const worldTimeAndLocation: WorldTimeAndLocation = {
-        worldTime: data,
         location: locdata,
+        worldTime: data,
       };
-      setWorldTime(worldTimeAndLocation);
+      setTimeAndLocationState(worldTimeAndLocation);
       setWorldTimeIsLoading(false);
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
-      setWorldTime(null);
+      setTimeAndLocationState(null);
     }
   };
 
@@ -76,10 +79,12 @@ export function ApplicationContextProvider({
     worldTimeIsLoading,
     worldTimeError,
     advice,
-    worldTime,
+    timeAndLocationState,
     getWorldtime,
     getAdviceData,
     upDateAdvice,
+    showAddedInformation,
+    setShowAddedInformation,
   };
 
   return (
