@@ -8,8 +8,8 @@ const Bottom = () => {
 
   return (
     <>
-      <div className="flex ">
-        <div className="w-1/2">
+      <div className="flex h-1/2   justify-evenly  ">
+        <div>
           <TimeSet
             timeAndLocationState={appctx.timeAndLocationState}
             worldTimeIsLoading={appctx.worldTimeIsLoading}
@@ -17,7 +17,7 @@ const Bottom = () => {
           />
         </div>
 
-        <div className="w-1/2">
+        <div>
           <Toggle
             showAdditionalInfo={appctx.showAddedInformation}
             changeBottomAndAddInfo={appctx.setShowAddedInformation}

@@ -10,23 +10,23 @@ const Citation: React.FC<AdviceProps> = ({ upDateAdvice, advice }) => {
     <>
       <div className="flex  ">
         {advice ? (
-          <>
+          <div>
             <p className=" text-xl">"{advice.advice}"</p>
             <p className="text-xl">advice #{advice.id}</p>
-          </>
+          </div>
         ) : (
           <p>No advice available</p>
         )}
-      </div>
-      <div>
-        <button className="le">
-          <img
-            className="w-4 h-4"
-            src={ArrowPath}
-            alt="ArrowPath"
-            onClick={upDateAdvice}
-          />
-        </button>
+        <div>
+          <button>
+            <img
+              className="w-4 h-4"
+              src={ArrowPath}
+              alt="ArrowPath"
+              onClick={upDateAdvice}
+            />
+          </button>
+        </div>
       </div>
     </>
   );
