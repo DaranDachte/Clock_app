@@ -1,3 +1,5 @@
+import ChevronDown from "../../../../assets/img/ChevronDown.svg";
+
 interface ToggleProps {
   showAdditionalInfo: boolean;
   changeBottomAndAddInfo: () => void;
@@ -9,7 +11,18 @@ const Toggle: React.FC<ToggleProps> = ({
 }) => {
   return (
     <button onClick={() => changeBottomAndAddInfo((prev: boolean) => !prev)}>
-      {showAdditionalInfo ? <p>LESS</p> : <p>MORE</p>}
+      {showAdditionalInfo ? (
+        <div className=" flex justify-around  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
+          <div>
+            <p>LESS</p>
+          </div>
+          <div>
+            <img src={ChevronDown} alt="ChevronDown" />
+          </div>
+        </div>
+      ) : (
+        <p>MORE</p>
+      )}
     </button>
   );
 };

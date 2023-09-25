@@ -4,10 +4,13 @@ import { ApplicationContext } from "../../../store/applicationContext";
 
 const Top = () => {
   const appctx = useContext(ApplicationContext);
-
+  const classes = [
+    "flex h-1/2 justify-evenly ",
+    appctx.showAddedInformation ? "hidden " : "",
+  ];
   return (
     <>
-      <div className="flex h-1/2 flex-col ">
+      <div className={classes.join(" ")}>
         <Citation upDateAdvice={appctx.upDateAdvice} advice={appctx.advice} />
       </div>
     </>
