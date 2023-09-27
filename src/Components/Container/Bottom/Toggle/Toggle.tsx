@@ -1,5 +1,5 @@
 import ChevronDown from "../../../../assets/img/ChevronDown.svg";
-
+import ChevronUp from "../../../../assets/img/ChevronUp.svg";
 interface ToggleProps {
   showAdditionalInfo: boolean;
   changeBottomAndAddInfo: () => void;
@@ -14,14 +14,25 @@ const Toggle: React.FC<ToggleProps> = ({
       {showAdditionalInfo ? (
         <div className=" flex justify-around  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
           <div>
-            <p>LESS</p>
+            <p className="font-bold tracking-[0.3125rem] text-base text-[#8b8b8b]">
+              LESS
+            </p>
           </div>
           <div>
             <img src={ChevronDown} alt="ChevronDown" />
           </div>
         </div>
       ) : (
-        <p>MORE</p>
+        <div className=" flex justify-around  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
+          <div>
+            <p className="font-bold tracking-[0.3125rem] text-base text-[#8b8b8b]">
+              MORE
+            </p>
+          </div>
+          <div>
+            <img src={ChevronUp} alt="ChevronUp" />
+          </div>
+        </div>
       )}
     </button>
   );

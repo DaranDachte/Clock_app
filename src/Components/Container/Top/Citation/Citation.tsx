@@ -8,7 +8,7 @@ interface AdviceProps {
 const Citation: React.FC<AdviceProps> = ({ upDateAdvice, advice }) => {
   return (
     <>
-      <div className="flex  ">
+      <div className="flex  justify-start ">
         {advice ? (
           <div>
             <p className=" text-xl">"{advice.advice}"</p>
