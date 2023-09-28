@@ -30,7 +30,8 @@ export function ApplicationContextProvider({
 
   useEffect(() => {
     getAdviceData();
-    getWorldtime();
+    const interval = setInterval(getWorldtime, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const getAdviceData = async () => {
