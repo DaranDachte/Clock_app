@@ -65,7 +65,9 @@ const Greeting: React.FC<GreetingProps> = ({
         ) : worldTimeError ? (
           <p>Sorry {worldTimeError}</p>
         ) : (
-          <div> Good {currentPeriodName}, it's currently: </div>
+          <div className="text-[1.125rem] font-normal text-[#fff] treacking-[0.25rem]">
+            Good {currentPeriodName}, it's currently:
+          </div>
         )}
       </div>
     </div>

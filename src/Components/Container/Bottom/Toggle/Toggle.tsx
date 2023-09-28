@@ -12,7 +12,7 @@ const Toggle: React.FC<ToggleProps> = ({
   return (
     <button onClick={() => changeBottomAndAddInfo((prev: boolean) => !prev)}>
       {showAdditionalInfo ? (
-        <div className=" flex justify-around  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
+        <div className=" flex justify-evenly  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
           <div>
             <p className="font-bold tracking-[0.3125rem] text-base text-[#8b8b8b]">
               LESS
@@ -23,7 +23,7 @@ const Toggle: React.FC<ToggleProps> = ({
           </div>
         </div>
       ) : (
-        <div className=" flex justify-around  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
+        <div className=" flex justify-evenly  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
           <div>
             <p className="font-bold tracking-[0.3125rem] text-base text-[#8b8b8b]">
               MORE

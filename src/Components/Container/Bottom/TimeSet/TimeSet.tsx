@@ -16,18 +16,18 @@ const TimeSet: React.FC<TimeSetProps> = ({
   worldTimeIsLoading,
 }) => {
   return (
-    <>
-      <div className="flex flex-col">
-        <Greeting
-          time={
-            (timeAndLocationState &&
-              timeAndLocationState.worldTime &&
-              timeAndLocationState.worldTime.datetime) ||
-            null
-          }
-          worldTimeError={worldTimeError}
-          worldTimeIsLoading={worldTimeIsLoading}
-        />
+    <div className="flex flex-col justify-center ">
+      <Greeting
+        time={
+          (timeAndLocationState &&
+            timeAndLocationState.worldTime &&
+            timeAndLocationState.worldTime.datetime) ||
+          null
+        }
+        worldTimeError={worldTimeError}
+        worldTimeIsLoading={worldTimeIsLoading}
+      />
+      <div className="flex items-end justify-center">
         <Time
           time={
             (timeAndLocationState &&
@@ -38,19 +38,17 @@ const TimeSet: React.FC<TimeSetProps> = ({
           worldTimeError={worldTimeError}
           worldTimeIsLoading={worldTimeIsLoading}
         />
-        <Location
-          location={
-            (timeAndLocationState && timeAndLocationState.location) || null
-          }
-          worldTimeError={worldTimeError}
-          worldTimeIsLoading={worldTimeIsLoading}
-        />
-      </div>
 
-      <div className="flex flex-row">
         <Dst timeAndLocationState={timeAndLocationState} />
       </div>
-    </>
+      <Location
+        location={
+          (timeAndLocationState && timeAndLocationState.location) || null
+        }
+        worldTimeError={worldTimeError}
+        worldTimeIsLoading={worldTimeIsLoading}
+      />
+    </div>
   );
 };
 

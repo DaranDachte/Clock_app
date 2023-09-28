@@ -26,7 +26,7 @@ const Location: React.FC<LocationProps> = ({
       ) : worldTimeError ? (
         <p>Sorry {worldTimeError}</p>
       ) : (
-        <div>
+        <div className="font-bold text-[1.5rem] text-[#fff] tracking-[ 0.3rem] ">
           in {city}, {country}
         </div>
       )}
