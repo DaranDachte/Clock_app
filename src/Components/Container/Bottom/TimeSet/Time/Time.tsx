@@ -22,7 +22,7 @@ const Time: React.FC<TimeProps> = ({
       ) : worldTimeError ? (
         <p>Sorry {worldTimeError}</p>
       ) : (
-        <div>
+        <div className=" text-[12.5rem] font-bold text-[#fff] tracking -[-0.3125rem]">
           {hours}:{minutes}:{seconds}
         </div>
       )}

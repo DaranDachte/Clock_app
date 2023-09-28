@@ -15,7 +15,17 @@ const Dst: React.FC<DstProps> = ({ timeAndLocationState }) => {
     worldTime: { dst },
   } = state;
 
-  return <div>{!dst ? <></> : country === "UK" ? <p>BST</p> : <p>DST</p>}</div>;
+  return (
+    <div>
+      {!dst ? (
+        <></>
+      ) : country === "UK" ? (
+        <p className=" font-light text-[2.5rem] text-[#fff]">BST</p>
+      ) : (
+        <p className=" font-light text-[2.5rem] text-[#fff]">DST</p>
+      )}
+    </div>
+  );
 };
 
 export default Dst;

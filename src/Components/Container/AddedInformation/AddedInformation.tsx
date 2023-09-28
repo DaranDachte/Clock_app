@@ -11,17 +11,33 @@ const AddedInformation = () => {
   return (
     <div className={classes.join(" ")}>
       <div>
-        <p> CURRENT TIMEZONE</p>
-        <h3>{appctx.timeAndLocationState?.worldTime.timezone}</h3>
-        <p>DAY OF THE YEAR</p>
-        <h3>{appctx.timeAndLocationState?.worldTime.day_of_year}</h3>
+        <p className=" text-[0.9375rem] text-[#303030] not-italic font-normal tracking-[ 0.1875rem]">
+          CURRENT TIMEZONE
+        </p>
+        <h3 className=" text-[3.5rem] text-[#303030] not-italic font-bold  tracking-[ 0.1875rem]">
+          {appctx.timeAndLocationState?.worldTime.timezone}
+        </h3>
+        <p className=" text-[0.9375rem] text-[#303030] not-italic font-normal tracking-[ 0.1875rem]">
+          DAY OF THE YEAR
+        </p>
+        <h3 className=" text-[3.5rem] text-[#303030] not-italic font-bold tracking-[ 0.1875rem]">
+          {appctx.timeAndLocationState?.worldTime.day_of_year}
+        </h3>
       </div>
       <div></div>
       <div>
-        <p>DAY OF THE WEEK</p>
-        <h3>{appctx.timeAndLocationState?.worldTime.day_of_week}</h3>
-        <p>WEEK NUMBER </p>
-        <h3>{appctx.timeAndLocationState?.worldTime.week_number}</h3>
+        <p className=" text-[0.9375rem] text-[#303030] not-italic font-normal tracking-[ 0.1875rem]">
+          DAY OF THE WEEK
+        </p>
+        <h3 className=" text-[3.5rem] text-[#303030] not-italic font-bold tracking-[ 0.1875rem]">
+          {appctx.timeAndLocationState?.worldTime.day_of_week}
+        </h3>
+        <p className=" text-[0.9375rem] text-[#303030] not-italic font-normal tracking-[ 0.1875rem]">
+          WEEK NUMBER
+        </p>
+        <h3 className=" text-[3.5rem] text-[#303030] not-italic font-bold tracking-[ 0.1875rem]">
+          {appctx.timeAndLocationState?.worldTime.week_number}
+        </h3>
       </div>
     </div>
   );
