@@ -1,6 +1,5 @@
 import Greeting from "./Greeting/Greeting";
 import Time from "./Time/Time";
-import Dst from "./Dst/Dst";
 import Location from "./Location/Location";
 import { WorldTimeAndLocation } from "../../../../models/domain";
 
@@ -16,7 +15,7 @@ const TimeSet: React.FC<TimeSetProps> = ({
   worldTimeIsLoading,
 }) => {
   return (
-    <div className="flex flex-col justify-center ">
+    <div className="flex flex-col  ">
       <Greeting
         time={
           (timeAndLocationState &&
@@ -27,20 +26,18 @@ const TimeSet: React.FC<TimeSetProps> = ({
         worldTimeError={worldTimeError}
         worldTimeIsLoading={worldTimeIsLoading}
       />
-      <div className="flex items-end justify-center">
-        <Time
-          time={
-            (timeAndLocationState &&
-              timeAndLocationState.worldTime &&
-              timeAndLocationState.worldTime.datetime) ||
-            null
-          }
-          worldTimeError={worldTimeError}
-          worldTimeIsLoading={worldTimeIsLoading}
-        />
 
-        <Dst timeAndLocationState={timeAndLocationState} />
-      </div>
+      <Time
+        time={
+          (timeAndLocationState &&
+            timeAndLocationState.worldTime &&
+            timeAndLocationState.worldTime.datetime) ||
+          null
+        }
+        worldTimeError={worldTimeError}
+        worldTimeIsLoading={worldTimeIsLoading}
+        timeAndLocationState={timeAndLocationState}
+      />
       <Location
         location={
           (timeAndLocationState && timeAndLocationState.location) || null

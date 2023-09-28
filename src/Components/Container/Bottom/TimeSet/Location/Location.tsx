@@ -20,17 +20,17 @@ const Location: React.FC<LocationProps> = ({
         };
   const { city, country } = locationPlace;
   return (
-    <>
+    <div className="font-bold text-[1.5rem] leading-[1.75rem] text-[#fff] tracking-[ 0.3rem] ">
       {worldTimeIsLoading ? (
-        <p>Loading...</p>
+        <span>Loading...</span>
       ) : worldTimeError ? (
-        <p>Sorry {worldTimeError}</p>
+        <span>Sorry {worldTimeError}</span>
       ) : (
-        <div className="font-bold text-[1.5rem] text-[#fff] tracking-[ 0.3rem] ">
+        <span>
           in {city}, {country}
-        </div>
+        </span>
       )}
-    </>
+    </div>
   );
 };
 
