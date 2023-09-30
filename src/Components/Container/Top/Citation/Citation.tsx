@@ -1,4 +1,3 @@
-import ArrowPath from "../../../../assets/img/ArrowPath.svg";
 import CombinedShape from "../../../../assets/img/CombinedShape.svg";
 import { Advice } from "../../../../models/domain";
 
@@ -9,7 +8,7 @@ interface AdviceProps {
 const Citation: React.FC<AdviceProps> = ({ upDateAdvice, advice }) => {
   return (
     <>
-      <div className="flex  justify-start ">
+      <div className="flex  justify-start pt-[3.5rem] min-w-[45rem]  max-w-[10rem]">
         {advice ? (
           <div>
             <p className=" text-[1.25rem] text-[#fff] font-normal ">
@@ -25,7 +24,7 @@ const Citation: React.FC<AdviceProps> = ({ upDateAdvice, advice }) => {
         <div>
           <button>
             <img
-              className="w-4 h-4 text-[#fff]"
+              className="w-4 h-4 ml-[1rem] text-[#fff]"
               src={CombinedShape}
               alt="Combined"
               onClick={upDateAdvice}

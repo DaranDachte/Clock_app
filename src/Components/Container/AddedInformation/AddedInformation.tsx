@@ -24,7 +24,7 @@ const AddedInformation = () => {
           {appctx.timeAndLocationState?.worldTime.day_of_year}
         </h3>
       </div>
-      <div></div>
+      <div className="border-l-[1px] border-l-[#8b8b8b] max-h-[20rem]"> </div>
       <div>
         <p className=" text-[0.9375rem] text-[#303030] not-italic font-normal tracking-[ 0.1875rem]">
           DAY OF THE WEEK

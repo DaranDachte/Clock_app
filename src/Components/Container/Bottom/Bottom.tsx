@@ -8,7 +8,7 @@ const Bottom = () => {
 
   return (
     <>
-      <div className="flex h-1/2   justify-evenly items-center  ">
+      <div className="flex h-1/2   justify-evenly items-end pb-[5rem] ">
         <div>
           <TimeSet
             timeAndLocationState={appctx.timeAndLocationState}
