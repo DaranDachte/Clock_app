@@ -30,7 +30,8 @@ export function ApplicationContextProvider({
 
   useEffect(() => {
     getAdviceData();
-    const interval = setInterval(getWorldtime, 10000);
+    getWorldtime();
+    const interval = setInterval(updateTimeSilently, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -70,6 +71,23 @@ export function ApplicationContextProvider({
       };
       setTimeAndLocationState(worldTimeAndLocation);
       setWorldTimeIsLoading(false);
+    } catch (error) {
+      setWorldTimeError("Something goes wrong!");
+      setTimeAndLocationState(null);
+    }
+  };
+
+  const updateTimeSilently = async () => {
+    try {
+      const locdata: Location = await getIp(); // запрос данных геолокации, из отдельного сервиса.
+      const data: WorldTime = await fetcher(
+        `http://worldtimeapi.org/api/timezone/${locdata.timezone}`
+      );
+      const worldTimeAndLocation: WorldTimeAndLocation = {
+        location: locdata,
+        worldTime: data,
+      };
+      setTimeAndLocationState(worldTimeAndLocation);
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
