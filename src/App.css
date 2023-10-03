@@ -1,1 +1,20 @@
+html {
+  --light-background-image: #ee82ee;
+  --dark-background-image: #800080;
+  --light-added-background-image: #d3d7d9;
+  --dark-added-background-image: #00004b;
+}
 
+body[theme="Light"] {
+  --background-image: var(--light-background-image);
+  --added-background-image: var(--light-added-background-image);
+}
+
+body[theme="Dark"] {
+  --background-image: var(--dark-background-image);
+  --added-background-image: var(--dark-added-background-image);
+}
+
+body {
+  background-image: var(--background-image);
+}

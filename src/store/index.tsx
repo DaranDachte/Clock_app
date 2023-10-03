@@ -28,12 +28,15 @@ export function ApplicationContextProvider({
 
   const [showAddedInformation, setShowAddedInformation] = useState(false);
 
+  const [changeBg, setChangeBg] = useState(false);
+
   useEffect(() => {
     getAdviceData();
     getWorldtime();
+    document.body.setAttribute("theme", changeBg ? "Dark" : "Light");
     const interval = setInterval(updateTimeSilently, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [changeBg]);
 
   const getAdviceData = async () => {
     if (!adviceIsLoading) setAdviceIsLoading(true);
@@ -94,6 +97,9 @@ export function ApplicationContextProvider({
     }
   };
 
+  const сhangeBackgroundTheme = () => {
+    setChangeBg((prevVal) => !prevVal);
+  };
   const ctxValue = {
     worldTimeIsLoading,
     worldTimeError,
@@ -104,6 +110,8 @@ export function ApplicationContextProvider({
     upDateAdvice,
     showAddedInformation,
     setShowAddedInformation,
+    changeBg,
+    сhangeBackgroundTheme,
   };
 
   return (
