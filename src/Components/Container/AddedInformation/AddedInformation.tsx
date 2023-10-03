@@ -4,7 +4,7 @@ import { ApplicationContext } from "../../../store/applicationContext";
 const AddedInformation = () => {
   const appctx = useContext(ApplicationContext);
   const classes = [
-    "flex h-1/2   justify-evenly  bg-white/[.75] backdrop-blur-[20.3px] pt-[4.62rem] ",
+    "flex h-1/2   justify-evenly bg-[#d3d7d9]  backdrop-blur-[20.3px] pt-[4.62rem] ",
     appctx.showAddedInformation ? "" : "hidden",
   ];
 
