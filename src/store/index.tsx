@@ -98,8 +98,17 @@ export function ApplicationContextProvider({
   };
 
   const сhangeBackgroundTheme = () => {
-    timeAndLocationState?.worldTime.datetime >= parseInt("23:00:00") &&
-    timeAndLocationState?.worldTime.datetime < parseInt("06:00:00")
+    const timeString = timeAndLocationState?.worldTime.datetime;
+    const timeParts = timeString.split(":"); // Разбиваем строку по двоеточию ["23", "00", "00"]
+
+    const hours = parseInt(timeParts[0]); // Преобразуем часы в число
+    const minutes = parseInt(timeParts[1]); // Преобразуем минуты в число
+    const seconds = parseInt(timeParts[2]); // Преобразуем секунды в число
+
+    // Вычисляем общее время в часах с плавающей точкой
+    const totalTime = hours + minutes / 60 + seconds / 3600;
+
+    totalTime > 23 && totalTime < 6
       ? setChangeBg((prevVal) => !prevVal)
       : changeBg;
   };
