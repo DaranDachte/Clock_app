@@ -11,6 +11,8 @@ type CtxValue = {
   worldTimeIsLoading: boolean;
   showAddedInformation: boolean;
   setShowAddedInformation: () => void;
+  changeBg: boolean;
+  сhangeBackgroundTheme: () => void;
 };
 
 export const ApplicationContext = createContext<CtxValue>({
@@ -58,6 +60,10 @@ export const ApplicationContext = createContext<CtxValue>({
   worldTimeIsLoading: false,
   showAddedInformation: false,
   setShowAddedInformation: function (): void {
+    throw new Error("Function not implemented.");
+  },
+  changeBg: false,
+  сhangeBackgroundTheme: function (): void {
     throw new Error("Function not implemented.");
   },
 });

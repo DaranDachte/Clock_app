@@ -3,16 +3,20 @@ html {
   --dark-background-image: #800080;
   --light-added-background-image: #d3d7d9;
   --dark-added-background-image: #00004b;
+  --light-added-color: #ffffff;
+  --dark-added-color: #303030;
 }
 
 body[theme="Light"] {
   --background-image: var(--light-background-image);
   --added-background-image: var(--light-added-background-image);
+  --added-color: var(--light-added-color);
 }
 
 body[theme="Dark"] {
   --background-image: var(--dark-background-image);
   --added-background-image: var(--dark-added-background-image);
+  --added-color: var(--dark-added-color);
 }
 
 body {

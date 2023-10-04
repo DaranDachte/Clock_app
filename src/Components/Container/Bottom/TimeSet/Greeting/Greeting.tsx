@@ -78,9 +78,9 @@ const Greeting: React.FC<GreetingProps> = ({
   // ((param, item) => item > param && item < 3)(1, item);
   const filterNumber3 = (param) => (item) => item > param && item < 3;
 
-  console.log([1, 2, 3, 4, 5].filter(filterNumber3(1)).map((x) => x)[0]);
+  // console.log([1, 2, 3, 4, 5].filter(filterNumber3(1)).map((x) => x)[0]);
 
-  console.log([1, 2, 3, 4, 5].filter(filterNumber3(0)).map((x) => x)[0]);
+  // console.log([1, 2, 3, 4, 5].filter(filterNumber3(0)).map((x) => x)[0]);
   return (
     <div>
       <div>

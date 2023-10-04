@@ -98,8 +98,12 @@ export function ApplicationContextProvider({
   };
 
   const сhangeBackgroundTheme = () => {
-    setChangeBg((prevVal) => !prevVal);
+    timeAndLocationState?.worldTime.datetime >= parseInt("23:00:00") &&
+    timeAndLocationState?.worldTime.datetime < parseInt("06:00:00")
+      ? setChangeBg((prevVal) => !prevVal)
+      : changeBg;
   };
+
   const ctxValue = {
     worldTimeIsLoading,
     worldTimeError,
