@@ -33,10 +33,9 @@ export function ApplicationContextProvider({
   useEffect(() => {
     getAdviceData();
     getWorldtime();
-    document.body.setAttribute("theme", changeBg ? "Dark" : "Light");
     const interval = setInterval(updateTimeSilently, 10000);
     return () => clearInterval(interval);
-  }, [changeBg]);
+  }, []);
 
   const getAdviceData = async () => {
     if (!adviceIsLoading) setAdviceIsLoading(true);
@@ -97,13 +96,6 @@ export function ApplicationContextProvider({
     }
   };
 
-  const сhangeBackgroundTheme = () => {
-    timeAndLocationState?.worldTime.datetime >= parseInt("23:00:00") &&
-    timeAndLocationState?.worldTime.datetime < parseInt("06:00:00")
-      ? setChangeBg((prevVal) => !prevVal)
-      : changeBg;
-  };
-
   const ctxValue = {
     worldTimeIsLoading,
     worldTimeError,
@@ -115,7 +107,7 @@ export function ApplicationContextProvider({
     showAddedInformation,
     setShowAddedInformation,
     changeBg,
-    сhangeBackgroundTheme,
+    setChangeBg,
   };
 
   return (

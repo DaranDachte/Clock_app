@@ -9,11 +9,34 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .animation-delay-2000 {
-    animation-delay: 2s;
+@layer base {
+  :root {
+    --light-background-image: #ee82ee;
+    --dark-background-image: #800080;
+    --light-added-background-image: #d3d7d9;
+    --dark-added-background-image: #00004b;
+    --light-added-color: #ffffff;
+    --dark-added-color: #303030;
+    --neutral-background-image: #ccc;
+    --neutral-added-background-image: #ccc;
+    --neutral-font-color: var(--light-added-color);
   }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
+}
+
+.theme-light {
+  --background-image: var(--light-background-image);
+  --added-background-image: var(--light-added-background-image);
+  --added-color: var(--dark-added-color);
+}
+
+.theme-dark {
+  --background-image: var(--dark-background-image);
+  --added-background-image: var(--dark-added-background-image);
+  --added-color: var(--light-added-color);
+}
+
+.neutral-theme {
+  --background-image: var(--neutral-background-image);
+  --added-background-image: var(--neutral-added-background-image);
+  --added-color: var(--neutral-font-color);
 }
