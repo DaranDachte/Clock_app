@@ -1,5 +1,6 @@
 import TimeSet from "./TimeSet/TimeSet";
 import Toggle from "./Toggle/Toggle";
+import ThemeController from "./ThemeController/ThemeController";
 import { useContext } from "react";
 import { ApplicationContext } from "../../../store/applicationContext";
 
@@ -23,6 +24,7 @@ const Bottom = () => {
             changeBottomAndAddInfo={appctx.setShowAddedInformation}
           />
         </div>
+        <ThemeController time={null} setChangeBg={appctx.setChangeBg} />
       </div>
     </>
   );

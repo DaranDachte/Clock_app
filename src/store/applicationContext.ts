@@ -12,7 +12,7 @@ type CtxValue = {
   showAddedInformation: boolean;
   setShowAddedInformation: () => void;
   changeBg: boolean;
-  сhangeBackgroundTheme: () => void;
+  setChangeBg: (x: boolean) => void;
 };
 
 export const ApplicationContext = createContext<CtxValue>({
@@ -63,7 +63,8 @@ export const ApplicationContext = createContext<CtxValue>({
     throw new Error("Function not implemented.");
   },
   changeBg: false,
-  сhangeBackgroundTheme: function (): void {
-    throw new Error("Function not implemented.");
+
+  setChangeBg: function (x: boolean): void {
+    throw new Error("Function not implemented.".concat(x.toString()));
   },
 });
