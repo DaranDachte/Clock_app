@@ -12,7 +12,7 @@ type CtxValue = {
   showAddedInformation: boolean;
   setShowAddedInformation: React.Dispatch<React.SetStateAction<boolean>>;
   changeBg: boolean;
-  setChangeBg: React.Dispatch<React.SetStateAction<boolean>>;
+  setChangeBg: (x: boolean) => void;
 };
 
 export const ApplicationContext = createContext<CtxValue>({
