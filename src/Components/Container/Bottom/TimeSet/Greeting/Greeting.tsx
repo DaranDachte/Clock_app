@@ -72,11 +72,11 @@ const Greeting: React.FC<GreetingProps> = ({
     .map((period) => period.name)[0]; // Извлекаем строку day из Array<day>.
   // Это один единственный элемент после фильтрации массива.
 
-  const filterNumber1 = (param, item) => item > param && item < 3;
+  // const filterNumber1 = (param, item) => item > param && item < 3;
   // const filterNumber2 = (item) => filterNumber1(1, item);
   // const filterNumber2 = (item) =>
   // ((param, item) => item > param && item < 3)(1, item);
-  const filterNumber3 = (param) => (item) => item > param && item < 3;
+  // const filterNumber3 = (param) => (item) => item > param && item < 3;
 
   // console.log([1, 2, 3, 4, 5].filter(filterNumber3(1)).map((x) => x)[0]);
 

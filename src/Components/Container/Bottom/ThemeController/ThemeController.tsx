@@ -21,7 +21,7 @@ const ThemeController: React.FC<ThemeControllerProps> = ({
     totalTimeInSeconds > 23 * secInHour &&
     totalTimeInSeconds < 6 * secInHour
   ) {
-    setChangeBg((prevVal: boolean) => !prevVal);
+    setChangeBg(true);
   }
 
   return <></>;

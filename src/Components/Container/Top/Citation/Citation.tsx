@@ -2,7 +2,7 @@ import CombinedShape from "../../../../assets/img/CombinedShape.svg";
 import { Advice } from "../../../../models/domain";
 
 interface AdviceProps {
-  advice: Advice;
+  advice: Advice | null;
   upDateAdvice: () => void;
 }
 const Citation: React.FC<AdviceProps> = ({ upDateAdvice, advice }) => {
