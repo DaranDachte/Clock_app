@@ -43,6 +43,7 @@ export function ApplicationContextProvider({
       const data: Data = await fetcher("https://api.adviceslip.com/advice");
       setAdvice(data.slip);
       setAdviceIsLoading(false);
+      adviceError;
     } catch (error) {
       setAdviceError("Something goes wrong!");
       setAdvice(null);

@@ -10,9 +10,9 @@ type CtxValue = {
   worldTimeError: string;
   worldTimeIsLoading: boolean;
   showAddedInformation: boolean;
-  setShowAddedInformation: () => void;
+  setShowAddedInformation: React.Dispatch<React.SetStateAction<boolean>>;
   changeBg: boolean;
-  setChangeBg: (x: boolean) => void;
+  setChangeBg: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ApplicationContext = createContext<CtxValue>({
