@@ -15,10 +15,6 @@ const Greeting: React.FC<GreetingProps> = ({
 }) => {
   const greetingDate = time !== null ? new Date(time) : new Date();
 
-  //Как  это работает? создаем константу гритинг дэйт. Проверяем, если ворлд тайм (компонент из юз стейт)
-  // не равен null, то есть время пришло через api, мы вызываем  new Date с параметром вордл тайм, то есть
-  // получаем текущее время из внешнего источника. Если ничего не приходит (null), то  мы вызываем
-  //  new Date() и через пустые скобки получаем локальное время из нашего компьютера.
   const secInHour = 3600;
   const hours = greetingDate.getHours();
 
@@ -26,12 +22,6 @@ const Greeting: React.FC<GreetingProps> = ({
   const seconds = greetingDate.getSeconds();
 
   const totalTimeInSeconds = hours * secInHour + minutes * 60 + seconds;
-
-  // const filterPeriod =
-  // (totalTime: number) => (period: { start: number; end: number }) => {
-  // const { start, end } = period;
-  // return start < totalTime && end > totalTime;
-  //};
 
   const filterPeriod = (
     totalTime: number,
@@ -62,25 +52,10 @@ const Greeting: React.FC<GreetingProps> = ({
   };
   const currentPeriodName = [nigth1, morning, day, evening, nigth2]
 
-    // .filter(filterPeriod(totalTimeInSeconds))
-    .filter((period) => filterPeriod(totalTimeInSeconds, period)) // Array<string> Array<day>
+    .filter((period) => filterPeriod(totalTimeInSeconds, period))
 
-    //evening элемент массива, который мы отфильтровали
-    // с помощью фильтра. Теперь мы используем мап, чтобы достать имя из evening, поэтому  мы делаем
-    // мап по одному элементу и достаем первый элемент (имя), у которого индекс 0
+    .map((period) => period.name)[0];
 
-    .map((period) => period.name)[0]; // Извлекаем строку day из Array<day>.
-  // Это один единственный элемент после фильтрации массива.
-
-  // const filterNumber1 = (param, item) => item > param && item < 3;
-  // const filterNumber2 = (item) => filterNumber1(1, item);
-  // const filterNumber2 = (item) =>
-  // ((param, item) => item > param && item < 3)(1, item);
-  // const filterNumber3 = (param) => (item) => item > param && item < 3;
-
-  // console.log([1, 2, 3, 4, 5].filter(filterNumber3(1)).map((x) => x)[0]);
-
-  // console.log([1, 2, 3, 4, 5].filter(filterNumber3(0)).map((x) => x)[0]);
   return (
     <div>
       <div>
