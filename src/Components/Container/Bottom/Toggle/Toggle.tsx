@@ -2,7 +2,7 @@ import ChevronDown from "../../../../assets/img/ChevronDown.svg";
 import ChevronUp from "../../../../assets/img/ChevronUp.svg";
 interface ToggleProps {
   showAdditionalInfo: boolean;
-  changeBottomAndAddInfo: () => void;
+  changeBottomAndAddInfo: (prev: boolean) => boolean;
 }
 
 const Toggle: React.FC<ToggleProps> = ({
@@ -10,7 +10,7 @@ const Toggle: React.FC<ToggleProps> = ({
   changeBottomAndAddInfo,
 }) => {
   return (
-    <button onClick={() => changeBottomAndAddInfo((prev: boolean) => !prev)}>
+    <button onClick={() => changeBottomAndAddInfo((prev: any) => !prev)}>
       {showAdditionalInfo ? (
         <div className=" flex justify-evenly  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
           <div>

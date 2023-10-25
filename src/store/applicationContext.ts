@@ -10,7 +10,7 @@ type CtxValue = {
   worldTimeError: string;
   worldTimeIsLoading: boolean;
   showAddedInformation: boolean;
-  setShowAddedInformation: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAddedInformation: (prev: boolean) => boolean;
   changeBg: boolean;
   setChangeBg: (x: boolean) => void;
 };
@@ -59,7 +59,7 @@ export const ApplicationContext = createContext<CtxValue>({
   worldTimeError: "",
   worldTimeIsLoading: false,
   showAddedInformation: false,
-  setShowAddedInformation: function (): void {
+  setShowAddedInformation: function () {
     throw new Error("Function not implemented.");
   },
   changeBg: false,
