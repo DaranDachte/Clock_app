@@ -26,7 +26,8 @@ export function ApplicationContextProvider({
   const [worldTimeError, setWorldTimeError] = useState("");
   const [worldTimeIsLoading, setWorldTimeIsLoading] = useState(true);
 
-  const [showAddedInformation, setShowAddedInformation] = useState(false);
+  const [showAddedInformation, setShowAddedInformation] =
+    useState<boolean>(false);
 
   const [changeBg, setChangeBg] = useState(false);
 

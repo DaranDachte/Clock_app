@@ -2,7 +2,7 @@ import ChevronDown from "../../../../assets/img/ChevronDown.svg";
 import ChevronUp from "../../../../assets/img/ChevronUp.svg";
 interface ToggleProps {
   showAdditionalInfo: boolean;
-  changeBottomAndAddInfo: (prev: boolean) => boolean;
+  changeBottomAndAddInfo: (x: boolean) => void;
 }
 
 const Toggle: React.FC<ToggleProps> = ({
@@ -10,7 +10,14 @@ const Toggle: React.FC<ToggleProps> = ({
   changeBottomAndAddInfo,
 }) => {
   return (
-    <button onClick={() => changeBottomAndAddInfo((prev: any) => !prev)}>
+    <button
+      onClick={
+        () =>
+          showAdditionalInfo
+            ? changeBottomAndAddInfo(false) // блок виден.
+            : changeBottomAndAddInfo(true) //  блок скрыт.
+      }
+    >
       {showAdditionalInfo ? (
         <div className=" flex justify-evenly  items-center w-[9rem] h-[3.5rem] bg-white rounded-[1.75rem]">
           <div>
