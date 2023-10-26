@@ -86,7 +86,7 @@ export function ApplicationContextProvider({
       const locdata: Location = await getIp(); // запрос данных геолокации, из отдельного сервиса.
 
       const data: WorldTime = await fetcher(
-        `http://worldtimeapi.org/api/timezone/${locdata.timezone}`
+        `https://worldtimeapi.org/api/timezone/${locdata.timezone}`
       );
       const worldTimeAndLocation: WorldTimeAndLocation = {
         location: locdata,
