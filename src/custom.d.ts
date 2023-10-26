@@ -6,8 +6,14 @@ declare module "*.svg" {
 }
 
 declare module "@everapi/ipbase-js" {
+  type responseT = {
+    data: {
+      timezone: { id: string };
+      location: { city: { name: string }; country: { name: string } };
+    };
+  };
   export default class Ipbase {
     constructor(apiKey: string);
-    info(): Promise<Location>;
+    info(): Promise<responseT>;
   }
 }
