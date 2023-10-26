@@ -10,7 +10,7 @@ type CtxValue = {
   worldTimeError: string;
   worldTimeIsLoading: boolean;
   showAddedInformation: boolean;
-  setShowAddedInformation: (prev: boolean) => boolean;
+  setShowAddedInformation: (x: boolean) => void;
   changeBg: boolean;
   setChangeBg: (x: boolean) => void;
 };
@@ -59,8 +59,8 @@ export const ApplicationContext = createContext<CtxValue>({
   worldTimeError: "",
   worldTimeIsLoading: false,
   showAddedInformation: false,
-  setShowAddedInformation: function () {
-    throw new Error("Function not implemented.");
+  setShowAddedInformation: function (x: boolean): void {
+    throw new Error("Function not implemented.".concat(x.toString()));
   },
   changeBg: false,
 
