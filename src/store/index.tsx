@@ -34,7 +34,7 @@ export function ApplicationContextProvider({
   useEffect(() => {
     getAdviceData();
     getWorldtime();
-    const interval = setInterval(updateTimeSilently, 10000);
+    const interval = setInterval(updateTimeSilently, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -96,6 +96,7 @@ export function ApplicationContextProvider({
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
+      setWorldTimeIsLoading(false);
     }
   };
 
