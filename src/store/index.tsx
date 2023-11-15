@@ -48,6 +48,7 @@ export function ApplicationContextProvider({
     } catch (error) {
       setAdviceError("Something goes wrong!");
       setAdvice(null);
+      setAdviceIsLoading(false);
     }
   };
 
@@ -78,6 +79,7 @@ export function ApplicationContextProvider({
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
+      setWorldTimeIsLoading(false);
     }
   };
 
@@ -93,6 +95,7 @@ export function ApplicationContextProvider({
         worldTime: data,
       };
       setTimeAndLocationState(worldTimeAndLocation);
+      setWorldTimeIsLoading(false);
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
