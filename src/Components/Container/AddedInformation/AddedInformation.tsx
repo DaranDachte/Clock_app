@@ -10,7 +10,11 @@ const AddedInformation = () => {
     currentTheme,
   ];
 
-  const message = "A response from the server is expected within one minute";
+  const message = (
+    <span className=" text-[1.5rem]  not-italic font-bold tracking-[ 0.1875rem]">
+      A response from the server is expected within one minute
+    </span>
+  );
 
   return (
     <div className={classes.join(" ")}>
