@@ -76,6 +76,7 @@ export function ApplicationContextProvider({
       };
       setTimeAndLocationState(worldTimeAndLocation);
       setWorldTimeIsLoading(false);
+      setWorldTimeError("");
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
@@ -96,6 +97,7 @@ export function ApplicationContextProvider({
       };
       setTimeAndLocationState(worldTimeAndLocation);
       setWorldTimeIsLoading(false);
+      setWorldTimeError("");
     } catch (error) {
       setWorldTimeError("Something goes wrong!");
       setTimeAndLocationState(null);
