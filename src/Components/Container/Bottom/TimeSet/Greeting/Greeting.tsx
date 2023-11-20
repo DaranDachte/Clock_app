@@ -8,11 +8,7 @@ interface GreetingProps {
 
 const NIGHT = "night";
 
-const Greeting: React.FC<GreetingProps> = ({
-  time,
-  worldTimeError,
-  worldTimeIsLoading,
-}) => {
+const Greeting: React.FC<GreetingProps> = ({ time, worldTimeIsLoading }) => {
   const greetingDate = time !== null ? new Date(time) : new Date();
 
   const secInHour = 3600;
@@ -56,29 +52,25 @@ const Greeting: React.FC<GreetingProps> = ({
 
     .map((period) => period.name)[0];
 
+  const greetingMessage = (
+    <div className="text-[1.125rem] font-normal text-[#fff] tracking-[0.25rem]">
+      <span>
+        {currentPeriodName === NIGHT ? (
+          <img className="inline mr-[1rem]" src={Moon} alt="Moon" />
+        ) : (
+          <img className="inline mr-[1rem]" src={Sun} alt="Sun" />
+        )}
+        Good {currentPeriodName}, it's currently:
+      </span>
+    </div>
+  );
+
   return (
     <div>
       <div>
         <img />
       </div>
-      <div>
-        {worldTimeIsLoading ? (
-          <p>Loading...</p>
-        ) : worldTimeError ? (
-          <p>Sorry {worldTimeError}</p>
-        ) : (
-          <div className="text-[1.125rem] font-normal text-[#fff] tracking-[0.25rem]">
-            <span>
-              {currentPeriodName === NIGHT ? (
-                <img className="inline mr-[1rem]" src={Moon} alt="Moon" />
-              ) : (
-                <img className="inline mr-[1rem]" src={Sun} alt="Sun" />
-              )}
-              Good {currentPeriodName}, it's currently:
-            </span>
-          </div>
-        )}
-      </div>
+      <div>{worldTimeIsLoading ? <p>Loading...</p> : greetingMessage}</div>
     </div>
   );
 };

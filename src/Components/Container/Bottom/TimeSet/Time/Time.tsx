@@ -13,7 +13,6 @@ const normalizeTime = (time: number) => {
 
 const Time: React.FC<TimeProps> = ({
   time,
-  worldTimeError,
   worldTimeIsLoading,
   timeAndLocationState,
 }) => {
@@ -37,8 +36,6 @@ const Time: React.FC<TimeProps> = ({
     <div>
       {worldTimeIsLoading ? (
         <span>Loading...</span>
-      ) : worldTimeError ? (
-        <span>Sorry {worldTimeError}</span>
       ) : (
         <>
           <span className=" leading-[12.5rem] text-[12.5rem] font-bold text-[#fff] tracking -[-0.3125rem]">

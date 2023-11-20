@@ -10,6 +10,8 @@ const AddedInformation = () => {
     currentTheme,
   ];
 
+  const message = "A response from the server is expected within one minute";
+
   return (
     <div className={classes.join(" ")}>
       <div className={`text-added-color  ${currentTheme} `}>
@@ -17,13 +19,13 @@ const AddedInformation = () => {
           CURRENT TIMEZONE
         </p>
         <h3 className=" text-[3.5rem]  not-italic font-bold  tracking-[ 0.1875rem]">
-          {appctx.timeAndLocationState?.worldTime.timezone}
+          {appctx.timeAndLocationState?.worldTime.timezone || message}
         </h3>
         <p className=" text-[0.9375rem] not-italic font-normal tracking-[ 0.1875rem]">
           DAY OF THE YEAR
         </p>
         <h3 className=" text-[3.5rem]  not-italic font-bold tracking-[ 0.1875rem]">
-          {appctx.timeAndLocationState?.worldTime.day_of_year}
+          {appctx.timeAndLocationState?.worldTime.day_of_year || message}
         </h3>
       </div>
       <div className="border-l-[1px] border-l-[#8b8b8b] max-h-[20rem]"> </div>
@@ -32,13 +34,13 @@ const AddedInformation = () => {
           DAY OF THE WEEK
         </p>
         <h3 className=" text-[3.5rem]  not-italic font-bold tracking-[ 0.1875rem]">
-          {appctx.timeAndLocationState?.worldTime.day_of_week}
+          {appctx.timeAndLocationState?.worldTime.day_of_week || message}
         </h3>
         <p className=" text-[0.9375rem]  not-italic font-normal tracking-[ 0.1875rem]">
           WEEK NUMBER
         </p>
         <h3 className=" text-[3.5rem]  not-italic font-bold tracking-[ 0.1875rem]">
-          {appctx.timeAndLocationState?.worldTime.week_number}
+          {appctx.timeAndLocationState?.worldTime.week_number || message}
         </h3>
       </div>
     </div>
